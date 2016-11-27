@@ -11,8 +11,9 @@ exports.save = function(req, res, next) {
 	var badges = _.clone(req.body);
 	model.save(badges, function(err) {
 		if (err) return res.json(503, {error: true});
+		console.log("model.save() returned successfully!");
+		next();
 	});
-
 };
 
 
@@ -22,4 +23,4 @@ exports.save = function(req, res, next) {
 exports.send = function(req, res, next) {
 	console.log("controllers.send()\n");
 	next();
-};
+}
