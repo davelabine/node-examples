@@ -1,0 +1,20 @@
+{
+  "name": "pubsub",
+  "version": "1.0.0",
+  "description": "node.js sample pub sub server",
+  "main": "app.js",
+  "scripts": {
+    "test": "test-command"
+  },
+  "keywords": [
+    "sample"
+  ],
+  "author": "David LaBine",
+  "license": "MIT",
+  "dependencies": {
+    "axon": "^2.0.2",
+    "express": "^3.0.0",
+    "redis": "^2.6.3",
+    "underscore": "^1.8.3"
+  }
+}
