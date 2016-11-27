@@ -13,6 +13,7 @@ exports.save = function(req, res, next) {
 		if (err) return res.json(503, {error: true});
 		console.log("model.save() returned successfully!");
 		next();
+		model.trim();
 	});
 };
 
