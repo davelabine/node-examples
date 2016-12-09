@@ -1,7 +1,7 @@
 'use strict';
 
 var redis = require('../lib/redis');
-
+var broadcast = require('../lib/broadcast');
 /**
  * Save badges to database
  * #param {Array} badges
@@ -23,3 +23,24 @@ exports.save = function(badges, callback) {
 exports.trim = function() {
 	redis.ltrim('badges', 0, 9);
 };
+
+/**
+ * Send out badges to the broadcaster
+ * #param {Array} badges
+ * #param {Function} callback
+ */
+ exports.send = function(badges, callback) {
+ 	badges.forEach(broadcast.send);
+ 	callback(null, null);
+ };
+
+ /**
+ * Get badges from redis
+ * @param {function} callback
+ */
+ exports.get = function(callback) {
+ 	redis.lrange('badges', 0, -1, function(err, data) {
+ 		if (err) return callback(err, null);
+ 		callback(null, data.map(JSON.parse));
+ 	});
+ }
