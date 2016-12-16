@@ -8,3 +8,6 @@ curl -H "Content-Type: application/json" -X POST -d '{"username":"xyz","password
 
 # Post on the / enpoint for pubsub.  We want to see the headers to verify what is happening.
 curl -v -X POST http://localhost:8000 -H "content-type: application/json" -d '[{"badge_id":"foo bar badge"}]'
+
+# Now get the badges from the pub sub which have been cached in Redis
+curl -v -X GET http://localhost:8000/badges
